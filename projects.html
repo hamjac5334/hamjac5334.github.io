@@ -1,255 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Hamilton's Portfolio - Projects</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: #373E4B;
+      color: white;
+      font-family: "Times New Roman", Times, serif;
+    }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack Hamilton's Portfolio</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 40px;
+      height: 80px;
+      color: #BDB835;
+      padding: 0 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #373E4B;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 10px 10px;
+      border-bottom: 3px solid #BDB835;
+    }
 
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
+    .header h4 {
+      font-size: 40px;
+      -webkit-text-stroke: 0.45px black;
+    }
 
-        body {
-            background-image: linear-gradient(to right, #373E4B, #8E8894);
-            font-family: "Times New Roman", Times, serif;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 40px;
-            height: 80px;
-            color: #BDB835;
-            padding: 0 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #373E4B;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 10px 10px;
-            border-bottom: 3px solid #BDB835;
-        }
+    nav ul li {
+      margin-left: 30px;
+    }
 
-        .header h4 {
-            font-size: 40px;
-            text-stroke: .45px black;
-            -webkit-text-stroke: .45px black;
-        }
+    nav ul li a {
+      text-decoration: none;
+      font-size: 30px;
+      color: #BDB835;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      -webkit-text-stroke: 0.4px black;
+    }
 
-        nav ul {
-            display: flex;
-            list-style-type: none;
-            font-weight: bold;
-        }
+    nav ul li a:hover {
+      color: white;
+      background-color: rgba(189, 184, 53, 0.2);
+    }
 
-        nav ul li {
-            margin-left: 30px;
-        }
+    .projects-section {
+      padding: 100px 20px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            font-size: 42px;
-            color: #BDB835;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-            text-stroke: .4px black;
-            -webkit-text-stroke: .4px black;
-        }
+    .project-category {
+      margin-bottom: 60px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-        nav ul li a:hover {
-            color: white;
-            background-color: rgba(189, 184, 53, 0.2);
-        }
+    .project-category h3 {
+      color: #BDB835;
+      border-bottom: 2px solid #BDB835;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
-        .projects-section {
-            margin: 20px;
-            padding: 20px;
-            line-height: 40px;
-            padding-top: 80px; 
-            padding-bottom: 100px; 
-        }
+    footer {
+      background-color: #373E4B;
+      color: #BDB835;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #BDB835;
+    }
 
-        .container-custom {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
+    footer a {
+      color: #BDB835;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-        .projects-section h2, .projects-section h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .projects-section a {
-            color: lightblue;
-        }
-
-        footer {
-            background-color: #373E4B;
-            color: #BDB835;
-            text-align: center;
-            padding: 20px;
-            border-top: 3px solid #BDB835;
-            width: 100%;
-            margin-top: auto; 
-        }
-
-        footer a {
-            color: #BDB835;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: white;
-        }
-
-    </style>
+    footer a:hover {
+      color: white;
+    }
+  </style>
 </head>
-
 <body>
-    <header class="header">
-        <h4>Jack Hamilton</h4>
-        <nav>
-            <ul>
-                <li><a href="index.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="resume.html">Resume</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="header">
+    <h4>Jack Hamilton</h4>
+    <nav>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <!-- Projects Section -->
+  <div class="section text-center" style="width: 100%; padding: 0;">
 
-    <div class="container-fluid projects-section">
-        <h2><u>Projects</u></h2>
-        <div class="text-center mb-4">
-            <h3>Computer Science Projects:</h3>
-            <a href="https://github.com/hamjac5334/Portfolio">https://github.com/hamjac5334/Portfolio</a>
-        </div>
-        
-        <div class="container-custom">
-            <h3 class="text-center"><u>Data Analysis Projects</u></h3>
-            <div class="mb-4">
-                <h4>Music Analysis</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/finalproject-musicanalyzer.ipynb">
-                https://github.com/hamjac5334/Portfolio/MusicAnalysis</a>
+    <!-- Data Analysis Projects -->
+    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
+      <h3 class="mb-4" style="color: #BDB835;">Data Analytics</h3>
+      <h3 class="mb-4" style="color: #BDB835;">Data Analysis Projects</h3>
+      <div class="row">
 
-                
-                <p> For my Computational Humanities final exam, I analyzed the similarities and differences between the top ten popular songs from 1953 and the top ten popular songs from 2023. I first created 7 different categories of code that I individually analyzed Tempo, Timbre,Major : Minor (ratio of Major to Minor chords), Lyric Sentiment, Memory, and 3 Librosa Functions. Then I put together these 6 components and createed a Total Score that tells how complex songs are and how structurally different the top songs from 2023 are to the top songs from 1953. I used Pandas, Matplotlib, Librosa, Numpy, and other python packages to complete this project. My biggest takeaway from this project was even with different time periods and different ways to create songs, popular music ultimately remains very similar despite the technology, instruments, and political state of the world. </p>
-
-                <h4>Lake Trout Analysis (Scientific Computing Lab 1)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/jack-hamilton-lab1-laketrout.ipynb">
-                https://github.com/hamjac5334/Portfolio/Data_Analysis/jack-hamilton-lab1-laketrout.ipynb</a>
-                
-                <p>For my first lab in my Scientific Computing Class, we were given a data frame of different trout (with assigned id numbers) that were caught in various lakes in Alaska. I cleaned and manipulated the data using pandas to follow the guidelines of the project. This project is pretty basic because it was the first week of class, but it was a good introductory project to display the basics of pandas. </p>
-
-                <h4>NYC Death Rates (Scientific Computing Lab 2)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/nyc-death-data-jack-hamilton.ipynb">
-                https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/nyc-death-data-jack-hamilton.ipynb</a>
-                
-
-                <p>For my second lab in my Scientific Computing Class, I worked with a partner to explore, manipulate, and visualize any data set of our choice and explain the significance of our findings. The dataset we worked on was death rates in New York City that looked at Ethnicity, Cause of Death, Age, Sex, etc. The data had already been filtered pretty severely because the ratio of men:women was 1:1, ratio of all 4 ethnicities displayed was 1:1:1:1. After I conducted analysis (using pandas) and visualizations (using plotnine) on the original data set, I had to break the original data frame into 2 smaller sub-data frames to get more insight about specific demographic groups. My two sub-data frames were: hispanic men who have heart disease, and black women who have alzheimers. From this project, we learned that finding a data set is very difficult and then you need to manipulate the data fairly heavily in order to gain meaningful insight from the data. Some major take aways include: heart disease is the most common form of death in NYC, the death rate of heart disease is decreasing for hispanic men in NYC, and the death count from Alzheimers is increasing for black women in NYC.</p>
-            
-            <h4>Modeling the System Dynamics of Malaria in Rwanda</h4>
-            <a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/malaria-project-jack-hamilton.ipynb">
-                https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/malaria-project-jack-hamilton.ipynb</a>
-                
-
-                <p>I researched the contraction patterns of malaria and the relationship between the disease in humans with mosquitoes. I first created SIR models and wrote differential equations to replicate the lifecycle of malaria in both humans and mosquitoes. Then I used ODEint in the scipy package and created models to simulate what malaria will look like in Rwanda for the next 60 months.  After this step, I took into account that a vaccination will be made, so I adjusted my equations and function for the models to display graphs that represent what malaria will look like in Rwanda for the next 60 months.</p>
-
-            <h4>Midterm Election Predictions for the Senate</h4>
-            <a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/lab-5-predicting-the-mid-term-elections.ipynb">
-                https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/lab-5-predicting-the-mid-term-elections.ipynb</a>
-                <h4>Midterm Election Predictions for the Senate</h4>
-
-                <p> For this project, I analyzed the 2024 U.S. Senate elections, focusing on swing states. I aggregated polling data from FiveThirtyEight, then cleaned and prepared it to determine candidates' odds of winning in each state. Using numpy's random.normal function, I developed an equation to account for margin of error in the polls. Finally, I implemented Monte Carlo simulations to predict Senate race outcomes in key swing states, providing a data-driven forecast for the 2024 election.</p>
-            </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Music Analysis</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/MusicAnalysis" style="color: #BDB835;">GitHub Link</a><br>
+            Analyzed the top songs of 1953 vs. 2023 by comparing sonic features, sentiment, and structure. Used Pandas, Librosa, and deep learning to evaluate complexity and trends in music.</p>
+          </div>
         </div>
 
-        <div class="container-custom">
-            <h3 class="text-center"><u>Python Projects</u></h3>
-            <div class="mb-4">
-                <h4>Command Line Hangman (Python)</h4>
-                
-                <a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/HangManPy/main.py">https://github.com/hamjac5334/Portfolio/HangManPy</a>
-                <p>This basic Python project implements a classic Hangman game, showcasing key programming concepts and techniques. It utilizes lists to store word banks for different difficulty levels and employs the random module for word selection. The main game logic is encapsulated in a recursive function, demonstrating function design and control flow. String manipulation and list comprehension are used to display the partially guessed word, while conditional statements and loops manage the game state and user interactions. The project also incorporates input validation, error handling, and a replay mechanism, highlighting fundamental aspects of user interface design in console applications.</p>
-
-                <h4>Schedule Maker (Python)</h4>
-                
-                <a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/ScheduleMaker/Schedule.py">https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/ScheduleMaker/Schedule.py</a>
-                <p>This Python project is an interactive calendar and to-do list manager that allows users to view a calendar for any specified year and month while adding tasks for specific dates. Users can input tasks with associated times and display their to-do list in a numbered format. The program also features a weekly schedule visualization, providing both a basic template and a detailed view where tasks can be assigned to specific days. It showcases fundamental Python programming concepts such as function definitions, list manipulation, and user input handling. With its simple interface, this tool effectively helps users organize and visualize their daily tasks within a cohesive calendar context. </p>
-            </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Lake Trout Analysis</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/jack-hamilton-lab1-laketrout.ipynb" style="color: #BDB835;">GitHub Link</a><br>
+            Cleaned trout data from Alaskan lakes using Pandas to learn foundational data wrangling: filtering, merging, and basic visualization for ecological analysis.</p>
+          </div>
         </div>
 
-        
-        <div class="container-custom">
-            <h3 class="text-center"><u>Java Projects</u></h3>
-            <div class="mb-4">
-                <h4>Command Line Wordle (Java)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/WordleProject/src"> https://github.com/hamjac5334/Portfolio/Wordle</a>
-                <p>This Java project implements a Wordle-style word guessing game, demonstrating object-oriented programming principles and core Java concepts. The game utilizes a static array to store potential words and employs the Random class for word selection. The Wordle class encapsulates the game state and logic, showcasing proper class design and encapsulation. It uses character arrays and StringBuilder for efficient string manipulation, particularly in generating hint feedback. The project implements game flow control through boolean methods and conditional statements, while also handling input validation and game termination conditions. This implementation highlights Java's strong typing, array manipulation, and string processing capabilities, providing an interactive console-based word guessing experience with clear feedback mechanisms.</p>
-            </div>
-
-            <div class="mb-4">
-                <h4>Measures of Central Tendency with GUI (Java)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/measuresCT/src/measuresCT">https://github.com/hamjac5334/Portfolio/CentralTendencies</a>
-                <p>This Java project implements a statistical measures calculator using JavaFX for the graphical user interface. The application demonstrates the integration of backend logic with a frontend GUI, showcasing key concepts in Java and JavaFX development. It utilizes FXML for layout design, separating the UI structure from the controller logic. The controller class employs JavaFX's @FXML annotations to bind UI elements to the code, illustrating the Model-View-Controller (MVC) pattern. The project showcases dynamic UI updates, event handling (for button clicks), and real-time calculations. It leverages Java's ArrayList for data storage and manipulation, demonstrating collection usage in a practical context. The implementation includes methods for calculating various statistical measures such as mean, median, variance, and standard deviation, highlighting mathematical operations in Java. The use of TextField components for input and output, along with proper input parsing and formatting, demonstrates effective user interaction handling in a GUI application.</p>
-            </div>
-
-            <div class="mb-4">
-                <h4>Graphical Data Display with GUI (Java)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/work%202/src/work">https://github.com/hamjac5334/Portfolio/GraphicData</a>
-                <p>This Java project implements a dynamic statistical visualization tool using JavaFX, showcasing both graphical user interface (GUI) elements and animation techniques. The application utilizes FXML for layout design, incorporating TextField components for user input and output, as well as Rectangle shapes for visual data representation. A custom AnimationTimer subclass, named WorkAnimationTimer, is employed to create smooth animations that update the heights of the rectangles in real-time as users input data. The project includes methods for calculating key statistical measures such as mean, median, and mode, which are dynamically updated based on user input. Additionally, it demonstrates effective event-driven programming by responding to user interactions and managing data using an ArrayList, while also incorporating error handling to ensure robust performance. Overall, this application combines mathematical computations with engaging visual elements, providing an interactive experience that enhances the understanding of statistical concepts through real-time data visualization.</p>
-            </div>
-
-            <div class="mb-4">
-                <h4>Single Player Air-hockey vs AI Opponent (Java)</h4>
-                <a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/hockey/src/hockey">https://github.com/hamjac5334/Portfolio/Hockey</a>
-                <p>This Java project implements an engaging single-player air hockey game featuring an AI opponent, showcasing advanced programming concepts and interactive gameplay. The game utilizes JavaFX for creating a visually appealing and responsive user interface, complete with animated game elements such as the puck, paddles, and score display. At its core, the project employs a HashMap to efficiently store and retrieve the puck's position and trajectory data, enabling precise physics calculations and realistic movement patterns. The AI opponent's behavior is driven by a sophisticated algorithm that combines the stored position data with a learning factor, allowing the AI to adapt its strategy as the game progresses. This implementation demonstrates the practical application of data structures for game state management and basic artificial intelligence techniques. The project incorporates event handling for user input, collision detection for game logic, and smooth animations for an immersive gaming experience. By setting a win condition of 5 points, the game provides a clear objective and encourages replayability. Through this project, developers can gain valuable experience in JavaFX GUI development, efficient data management using HashMaps, and the fundamentals of AI programming in a game context.</p>
-            </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">NYC Death Rates</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/nyc-death-data-jack-hamilton.ipynb" style="color: #BDB835;">GitHub Link</a><br>
+            Explored public health trends in NYC using filtered subset data to compare mortality rates across demographics. Visualized using Plotnine.</p>
+          </div>
         </div>
 
-        
-        <div class="container-custom">
-            <h3 class="text-center"><u>SQL Projects</u></h3>
-
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Malaria Dynamics</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/malaria-project-jack-hamilton.ipynb" style="color: #BDB835;">GitHub Link</a><br>
+            Modeled malaria transmission in Rwanda using SIR models and SciPy’s ODEint. Simulated outcomes with and without vaccine interventions over 5-year projections.</p>
+          </div>
         </div>
 
-        
-        
-        
-        <div class="container-custom">
-            <h3 class="text-center"><u>Statistical Analysis</u></h3>
-            <div class="mb-4">
-                <h4 style="text-align: left;">Socio-economic Impact on Classroom Performance</h4>
-                <a href="https://drive.google.com/drive/folders/1zNm5xlO4knISnFJxHTyDfnHeXUSvmzOI"> https://drive.google.com/Socio-economicImpactInClass</a>
-                <p>I wanted to see how much somebody's socioeconomic status affects how well they do in primary and secondary school. I found raw data from an anonymous school district in North Carolina that provides demographic information about the students along with standardized testing scores. From a sample size of 10,000, I found the summary statistics and then conducted hypothesis testing to find the results. Read my analysis on the link provided above.</p>
-            </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Election Predictions</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/lab-5-predicting-the-mid-term-elections.ipynb" style="color: #BDB835;">GitHub Link</a><br>
+            Predicted midterm Senate outcomes using Monte Carlo simulations. Cleaned polling data and applied random distribution modeling to estimate win probabilities.</p>
+          </div>
         </div>
+
+      </div>
     </div>
 
-    <footer>
-        <h3>Contact Me</h3>
-        <p>Phone: <a href="tel:+18438477056">(843) 847-7056</a></p>
-        <p>Email: <a href="mailto:jack.hamilton@comcast.net">jack.hamilton@comcast.net</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/jack-hamilton-457bb02a7/">https://www.linkedin.com/in/jack-hamilton-457bb02a7/</a></p>
-    </footer>
+    <!-- Python Projects -->
+    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
+      <h3 class="mb-4" style="color: #BDB835;">Python Projects</h3>
+      <div class="row">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Command Line Hangman</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/HangManPy/main.py" style="color: #BDB835;">GitHub Link</a><br>
+            Built a text-based CLI Hangman game with recursive game loop, error handling, and difficulty levels. Emphasizes Pythonic use of functions, loops, and modularity.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Schedule Maker</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/ScheduleMaker/Schedule.py" style="color: #BDB835;">GitHub Link</a><br>
+            Created a calendar and task planner that outputs weekly and monthly layouts. Designed for the terminal using lists, custom input formatting, and control structures.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Java Projects -->
+    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
+      <h3 class="mb-4" style="color: #BDB835;">Java Projects</h3>
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Command Line Wordle</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/WordleProject/src" style="color: #BDB835;">GitHub Link</a><br>
+            CLI clone of Wordle implemented in Java using arrays, encapsulation, and custom feedback logic with efficient character-level comparison.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Measures of Central Tendency</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/measuresCT/src/measuresCT" style="color: #BDB835;">GitHub Link</a><br>
+            JavaFX GUI to compute and display basic descriptive statistics. Follows MVC, uses ArrayLists, and handles various user input scenarios.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Graphical Data Display</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/work%202/src/work" style="color: #BDB835;">GitHub Link</a><br>
+            Visual app using JavaFX animations to highlight real-time changes in mean, median, and mode with animated rectangles that grow/shrink with data input.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">Air Hockey vs AI</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/hockey/src/hockey" style="color: #BDB835;">GitHub Link</a><br>
+            Single-player JavaFX air hockey with animated sprites and AI opponent powered by position tracking and learned responses using a HashMap system.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Statistical Analysis -->
+    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
+      <h3 class="mb-4" style="color: #BDB835;">Statistical Analysis</h3>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="p-4 bg-dark text-light rounded shadow h-100">
+            <h4 style="color: #BDB835;">SES Impact on Performance</h4>
+            <p><a href="https://drive.google.com/drive/folders/1zNm5xlO4knISnFJxHTyDfnHeXUSvmzOI" style="color: #BDB835;">Project Link</a><br>
+            Measured how socioeconomic status affects test scores using a 10,000-student dataset from NC public schools. Performed hypothesis testing and mean comparisons.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <h3>Contact Me</h3>
+    <p>Phone: <a href="tel:+18438477056">(843) 847-7056</a></p>
+    <p>Email: <a href="mailto:jack.hamilton@comcast.net">jack.hamilton@comcast.net</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/jack-hamilton-457bb02a7/">jack-hamilton-457bb02a7</a></p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
