@@ -12,11 +12,11 @@
 
   <style>
     body {
-      background-color: #373E4B;
+      background-color: #0d233b;
       font-family: "Times New Roman", Times, serif;
       color: white;
-      margin: 0; /* Remove all margins */
-      padding: 0; /* Remove all padding */
+      margin: 0;
+      padding: 0;
     }
 
     .header {
@@ -25,16 +25,14 @@
       align-items: center;
       font-size: 40px;
       height: 80px;
-      color: #BDB835;
+      color: #373E4B;
       padding: 0 20px;
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #373E4B;
+      background-color: #bfc9db;
       z-index: 1000;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 0 0 10px 10px;
-      border-bottom: 3px solid #BDB835;
     }
 
     .header h4 {
@@ -46,8 +44,12 @@
       display: flex;
       list-style-type: none;
       font-weight: bold;
-      padding: 0; /* Remove padding */
-      margin: 0; /* Remove margin */
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul.active {
+      display: flex;
     }
 
     nav ul li {
@@ -57,7 +59,7 @@
     nav ul li a {
       text-decoration: none;
       font-size: 30px;
-      color: #BDB835;
+      color: #373E4B;
       padding: 10px 15px;
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
@@ -69,32 +71,154 @@
       background-color: rgba(189, 184, 53, 0.2);
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background-color: #373E4B;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 15px;
+      }
+
+      .header h4 {
+        font-size: 28px;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        width: 200px;
+        background-color: #bfc9db;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border: 3px solid #373E4B;
+      }
+
+      nav ul.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      nav ul li {
+        margin: 15px 0;
+        margin-left: 0;
+      }
+
+      nav ul li a {
+        font-size: 24px;
+        display: block;
+        padding: 10px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 950px) {
+      .header h4 {
+        font-size: 32px;
+      }
+
+      nav ul li {
+        margin-left: 15px;
+      }
+
+      nav ul li a {
+        font-size: 24px;
+        padding: 8px 12px;
+      }
+    }
+
     .image-section {
       position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-top: 80px;
     }
 
     .image-section img {
       width: 100%;
       height: 600px;
       object-fit: cover;
+      display: block;
     }
 
     .overlay.static-title {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 82%;
+      left: 2%;
+      transform: translateY(-50%);
       color: #FFFFFF;
       font-size: 64px;
       font-weight: bold;
       text-shadow: 0 0 3px #000000, 0 0 5px #000000;
-      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 1200px) {
+      .overlay.static-title {
+        font-size: 56px;
+        left: 15%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .overlay.static-title {
+        font-size: 48px;
+        left: 10%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .overlay.static-title {
+        font-size: 36px;
+        left: 10%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .overlay.static-title {
+        font-size: 28px;
+        left: 5%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .overlay.static-title {
+        font-size: 22px;
+        left: 5%;
+      }
     }
 
     .section {
       padding: 20px;
       width: 100%;
-      margin: 0; /* Remove margin */
+      margin: 0;
     }
 
     .section h2 {
@@ -108,7 +232,6 @@
     .about-container {
       background-color: rgba(0, 0, 0, 0.5);
       line-height: 1.7;
-      padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -116,11 +239,10 @@
     .about-container img {
       max-width: 150px;
       height: auto;
-      border-radius: 8px;
     }
 
     .skills-section, .courses-section {
-      margin-top: 0; /* Remove margin */
+      margin-top: 0;
     }
 
     .skills-container, .courses-container {
@@ -139,29 +261,28 @@
     .skills-section ul, .courses-section ul {
       list-style: none;
       padding-left: 0;
-      margin: 0; /* Remove margin */
+      margin: 0;
     }
 
     .skills-section ul li, .courses-section ul li {
       background-color: #4A4A4A;
       padding: 10px;
       border-radius: 5px;
-      margin: 0; /* Remove margin */
+      margin: 0;
       color: #E0E0E0;
     }
 
     footer {
-      background-color: #373E4B;
-      color: #BDB835;
+      background-color: #bfc9db;
+      color: #373E4B;
       text-align: center;
       padding: 40px 20px;
-      border-top: 3px solid #BDB835;
       width: 100%;
-      margin: 0; /* Remove margin */
+      margin: 0;
     }
 
     footer a {
-      color: #BDB835;
+      color: #373E4B;
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -180,28 +301,65 @@
 <body>
   <header class="header">
     <h4>Jack Hamilton</h4>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
+      <ul id="navMenu">
+        <li><a href="index.html" onclick="closeMenu()">About</a></li>
+        <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+        <li><a href="resume.html" onclick="closeMenu()">Resume</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Image -->
-  <div class="container-fluid">
-    <div class="image-section">
-      <img src="IMG_3766.JPG" alt="Profile Image" />
-      <div class="overlay static-title">Jack Hamilton's Portfolio</div>
+  <div class="image-section">
+    <img src="IMG_3766.JPG" alt="Profile Image" style="opacity:.45;"/>
+    <div class="overlay static-title">
+      <span>Jack Hamilton:</span>
+      <span>Tech and Analytics Portfolio</span>
     </div>
   </div>
 
-  <!-- Important Links -->
-  <div class="section links-section text-center">
+  
+
+  <!-- About -->
+<div class="py-3 px-3" style="margin-bottom: 0; padding-bottom: 0;">
+  <div class="container-fluid">
+    <h2 class="text-center mb-5" style="color: #FFFFFF;">About Me</h2>
+    <div class="row">
+      <!-- Image Column -->
+      <div class="col-md-3 text-center mb-4 mb-md-0">
+        <img src="IMG_7228.jpg" class="img-fluid rounded shadow" alt="Jack Hamilton" style="width: 100%; max-width: 300px; height: auto;" />
+      </div>
+
+      <!-- Text Column -->
+      <div class="col-md-9 text-light" style="line-height: 1.8; font-size: 18px;">
+        <p>
+          My name is Jack Hamilton and I am a recent Computer Science and Data Analytics graduate from Hendrix College. I am passionate about quantitative research and turning data into actionable through programming and thoughtful analysis.
+        </p>
+        <p>
+          My journey has included a wide range of projects and programming languages. Over the past year, I've focused on building proficiency with industry-relevant tools while completing coursework in algorithms, scientific computing, and mobile software development. IIn Spring 2025, I participated in an exchange program at the Universitat Pompeu Fabra in Barcelona, Spain, where I studied Data Science and Computational Statistics.
+
+          Professionally, I have contributed to independent research using U.S. Census data to analyze demographic trends, developed full-stack mobile applications for clients, and served as an Artificial Intelligence and Machine Learning Research Intern at the Wake Forest School of Medicine’s Center for Artificial Intelligence Research. Currently, I work as a Full Stack Analyst Intern at Bogmayer Ltd. and as a coding instructor at iCode Mount Pleasant, while also taking on freelance development projects.
+
+          
+        </p>
+        <p>
+          In Fall 2026, I will begin my Master of Science in Business Analytics at Georgetown University's McDonough School of Business. My goal is to deepen my expertise at the intersection of technology and business, leveraging data-driven insights to inform strategy and innovation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Important Links -->
+  <div class="section links-section text-center" style="margin-top: 0; padding-top: 5px;">
     <div class="card p-4" style="max-width: 700px; margin: 0 auto; background-color: transparent; color: white; box-shadow: none; border: none; outline: none; border-radius: 0;">
       <div class="card-body">
-        <h2 class="mb-4" style="color: #BDB835;"><u>Important Links</u></h2>
+        <h2 class="mb-4" style="color: #FFFFFF;">Important Links</h2>
         <div class="d-flex flex-column align-items-center gap-3">
           <a href="https://www.linkedin.com/in/jack-hamilton-457bb02a7/" class="btn btn-outline-light btn-lg mb-3" target="_blank">
             <i class="fab fa-linkedin me-2"></i> LinkedIn Profile
@@ -212,43 +370,14 @@
           <a href="https://www.kaggle.com/jackhamilton45" class="btn btn-outline-light btn-lg mb-3" target="_blank">
             <i class="fab fa-kaggle me-2"></i> Kaggle Profile
           </a>
-          <a href="https://drive.google.com/drive/folders/1zNm5xlO4knISnFJxHTyDfnHeXUSvmzOI" class="btn btn-outline-light btn-lg" target="_blank">
-            <i class="fas fa-folder-open me-2"></i> Project Files (Google Drive)
-          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- About -->
-<div class="py-5 px-3" style="background-color: rgba(0, 0, 0, 0.3);">
-  <div class="container-fluid">
-    <h2 class="text-center mb-5" style="color: #BDB835;"><u>About Me</u></h2>
-    <div class="row">
-      <!-- Image Column -->
-      <div class="col-md-3 text-center mb-4 mb-md-0">
-        <img src="IMG_7228.jpg" class="img-fluid rounded shadow" alt="Jack Hamilton" style="width: 100%; max-width: 300px; height: auto;" />
-      </div>
-
-      <!-- Text Column -->
-      <div class="col-md-9 text-light" style="line-height: 1.8; font-size: 18px;">
-        <p>
-          My name is Jack Hamilton and I’m a Computer Science major and Data Analytics minor at Hendrix College planning on graduating in December of 2025. I’m passionate about quantitative research and turning data into decisions through programming and thoughtful analysis.
-        </p>
-        <p>
-          My journey has included many different projects and programming languages. In the past year, I’ve focused on learning industry-relevant tools while completing coursework in algorithms, scientific computing, and mobile software development. For the Spring of 2025, I did an exchange program where I studied Data Science and Computational Statistics at the Universitat Pompeu Fabra in Barcelona, Spain. I’ve contributed to independent research using census data to explore demographic trends, have done full stack mobile software development for clients, and I am currently an Artificial Intelligence/Machine Learning Research intern at the Wake Forest School of Medicine's Center for Artificial Intelligence Research. My goal is to continue to learn different techniques, real world applications, and to get my Masters degree in Data Science and AI/ML.
-        </p>
-        <p>
-          Outside of the classroom, I’m a student-athlete, member of the Volunteer Action Committee, and on the Programming team at Hendrix. I enjoy applying computer science in practical and unexpected places. You can find more on my projects page or check out my GitHub, Kaggle, and Drive repositories.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
   <!-- Experience -->
 <div class="section text-center" style="background-color: white; width: 100%; padding: 20px;">
-  <h2 style="color: #BDB835;"><u>Experience</u></h2>
+  <h2 style="color: #373E4B;">Experience</h2>
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row" style="gap: 30px;">
     <div style="height: 150px; display: flex; align-items: center;">
       <img src="HENDRIX_COLLEGE_RGB w-control-01.png" alt="Hendrix logo" style="max-height: 100%; max-width: 200px;" />
@@ -271,77 +400,78 @@
   <!-- Skills -->
   <div class="section text-center" style="width: 100%; padding: 0;">
     <!-- Programming Languages -->
-<div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); width: 100%; padding: 20px;">
-  <h3 class="mb-4" style="color: #BDB835;">Programming Languages</h3>
+<div class="py-5" style="width: 100%; padding: 20px;">
+  <h3 class="mb-4" style="color: #FFFFFF;">Programming Languages</h3>
   <div class="row">
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
-        <div class="mb-3">
-          <i class="fas fa-code fa-2x" style="color: #BDB835;"></i>
-        </div>
-        <h4 style="color: #BDB835;">Python</h4>
-        <p>
-          Worked on an array of different projects including software development, data science, interactive games, and statistical analysis. This is my strongest programming language.
-        </p>
-      </div>
+  <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <div class="mb-3">
+      <i class="fas fa-code fa-2x" style="color: #FFFFFF;"></i>
     </div>
+    <h4 style="color: #FFFFFF;">Python</h4>
+    <p class="flex-grow-1">
+      Worked on an array of different projects including software development, data science, interactive games, and statistical analysis. This is my strongest programming language.
+    </p>
+  </div>
+</div>
+
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fab fa-java fa-2x" style="color: #BDB835;"></i>
+          <i class="fab fa-java fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Java</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Java</h4>
+        <p class="flex-grow-1">
           Created multiple Java-based games/simulations that have strong implementations of different data structures/algorithms. Have experience creating user based programs and working with AI.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fab fa-html5 fa-2x" style="color: #BDB835;"></i>
+          <i class="fab fa-html5 fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">HTML & CSS</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">HTML & CSS</h4>
+        <p class="flex-grow-1">
           Designed and styled this portfolio and other projects using semantic HTML and custom CSS with Bootstrap 4. Worked on mobile-friendly, responsive layouts.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-mobile-alt fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-mobile-alt fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Flutter/Dart</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Flutter/Dart</h4>
+        <p class="flex-grow-1">
           Developed multiple mobile applications with UI interactions. Worked with clients to create fully functional apps for their needs.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-database fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-database fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">SQL</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">SQL</h4>
+        <p class="flex-grow-1">
           Used SQL for queries in PostgreSQL environment. Analyzed different business datasets to find trends and patterns to optimize decision making.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-chart-bar fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-chart-bar fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">R</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">R</h4>
+        <p class="flex-grow-1">
           Utilized R for statistical analysis and data visualization. Used briefly in Business Statistics course in college.
         </p>
       </div>
@@ -351,77 +481,77 @@
 </div>
 
     <!-- Data Science & Analytics -->
-<div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); width: 100%; padding: 20px;">
-  <h3 class="mb-4" style="color: #BDB835;">Data Science & Analytics</h3>
+<div class="py-5" style="width: 100%; padding: 20px;">
+  <h3 class="mb-4" style="color: #FFFFFF;">Data Science & Analytics</h3>
   <div class="row">
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-table fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-table fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Pandas</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Pandas</h4>
+        <p class="flex-grow-1">
           Used extensively for cleaning and analyzing datasets in many different sectors. This is my preffered method for data analysis.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-chart-pie fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-chart-pie fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Matplotlib</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Matplotlib</h4>
+        <p class="flex-grow-1">
           Primary method for data visualizations. Have experience plotting many different types of graphs to explore and gain insights on large data.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-robot fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-robot fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Scikit-learn</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Scikit-learn</h4>
+        <p class="flex-grow-1">
           Applied basic machine learning models for classification tasks. Familiar with regression, clustering, and model evaluation in small-scale projects.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-microchip fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-microchip fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Deep Learning</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Deep Learning</h4>
+        <p class="flex-grow-1">
           Have experience integrating deep learning with TensorFlow and Keras into my projects. Applied neural nets to evaluate complexity, classify, and recognize patterns of different data sets.
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-server fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-server fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Database Management</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Database Management</h4>
+        <p class="flex-grow-1">
           Have experience managing both SQL and NoSQL databases. I have worked with Postgres SQL to handle structured data. Built and managed firebase databases for Mobile Applications. 
         </p>
       </div>
     </div>
 
     <div class="col-md-4 mb-4">
-      <div class="p-4 bg-dark text-light rounded shadow h-100">
+      <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <div class="mb-3">
-          <i class="fas fa-file-excel fa-2x" style="color: #BDB835;"></i>
+          <i class="fas fa-file-excel fa-2x" style="color: #FFFFFF;"></i>
         </div>
-        <h4 style="color: #BDB835;">Excel</h4>
-        <p>
+        <h4 style="color: #FFFFFF;">Excel</h4>
+        <p class="flex-grow-1">
           Comfortable using excel to analyze smaller datasets. Familiar with many different queries, creating tables, and visualization.
         </p>
       </div>
@@ -432,41 +562,41 @@
 
 
     <!-- Technical Skills -->
-    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); width: 100%; padding: 20px;">
-      <h3 class="mb-4" style="color: #BDB835;">Technical Skills</h3>
+    <div class="py-5" style="width: 100%; padding: 20px;">
+      <h3 class="mb-4" style="color: #FFFFFF;">Technical Skills</h3>
       <div class="row">
 
         <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
+          <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="mb-3">
-              <i class="fas fa-cogs fa-2x" style="color: #BDB835;"></i>
+              <i class="fas fa-cogs fa-2x" style="color: #FFFFFF;"></i>
             </div>
-            <h4 style="color: #BDB835;">Mobile App Dev</h4>
-            <p>
+            <h4 style="color: #FFFFFF;">Mobile App Dev</h4>
+            <p class="flex-grow-1">
               Developed cross-platform apps in Flutter for personal use and client based needs. Worked on both front end and back end of development.
             </p>
           </div>
         </div>
 
         <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
+          <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="mb-3">
-              <i class="fas fa-network-wired fa-2x" style="color: #BDB835;"></i>
+              <i class="fas fa-network-wired fa-2x" style="color: #FFFFFF;"></i>
             </div>
-            <h4 style="color: #BDB835;">OOP & Design</h4>
-            <p>
+            <h4 style="color: #FFFFFF;">OOP & Design</h4>
+            <p class="flex-grow-1">
               Strong foundation in Object-Oriented Programming principles from both academic and personal projects. Built multiple Java and Python-based modular programs.
             </p>
           </div>
         </div>
 
         <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
+          <div class="p-4 h-100 d-flex flex-column" style="background-color: rgba(191, 201, 219, 0.4); color: white; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <div class="mb-3">
-              <i class="fas fa-database fa-2x" style="color: #BDB835;"></i>
+              <i class="fas fa-database fa-2x" style="color: #FFFFFF;"></i>
             </div>
-            <h4 style="color: #BDB835;">SQL & Excel</h4>
-            <p>
+            <h4 style="color: #FFFFFF;">SQL & Excel</h4>
+            <p class="flex-grow-1">
               Used SQL for queries in PostgreSQL setups. Comfortable in Excel with functions, pivot tables, and charts for analysis.
             </p>
           </div>
@@ -488,9 +618,36 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.getElementById('navMenu');
+      const hamburger = document.querySelector('.hamburger');
+      const header = document.querySelector('.header');
+      
+      if (!header.contains(event.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Reset menu state when resizing window
+    window.addEventListener('resize', function() {
+      const navMenu = document.getElementById('navMenu');
+      if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
