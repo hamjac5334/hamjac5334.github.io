@@ -11,9 +11,17 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      background-color: #373E4B;
+      height: 100%;
+      background-color: #0d233b;
       color: white;
       font-family: "Times New Roman", Times, serif;
+      overscroll-behavior: none;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
     }
 
     .header {
@@ -22,29 +30,31 @@
       align-items: center;
       font-size: 40px;
       height: 80px;
-      color: #BDB835;
+      color: #373E4B;
       padding: 0 20px;
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #373E4B;
+      background-color: #bfc9db;
       z-index: 1000;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 0 0 10px 10px;
-      border-bottom: 3px solid #BDB835;
     }
 
     .header h4 {
       font-size: 40px;
-      -webkit-text-stroke: 0.45px black;
+      -webkit-text-stroke: .45px black;
     }
 
     nav ul {
       display: flex;
       list-style-type: none;
       font-weight: bold;
-      margin: 0;
-      padding: 0;
+      padding: 0; /* Remove padding */
+      margin: 0; /* Remove margin */
+    }
+
+    nav ul.active {
+      display: flex;
     }
 
     nav ul li {
@@ -54,11 +64,11 @@
     nav ul li a {
       text-decoration: none;
       font-size: 30px;
-      color: #BDB835;
+      color: #373E4B;
       padding: 10px 15px;
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
-      -webkit-text-stroke: 0.4px black;
+      -webkit-text-stroke: .4px black;
     }
 
     nav ul li a:hover {
@@ -66,37 +76,161 @@
       background-color: rgba(189, 184, 53, 0.2);
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background-color: #373E4B;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 15px;
+      }
+
+      .header h4 {
+        font-size: 28px;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        width: 200px;
+        background-color: #bfc9db;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border: 3px solid #373E4B;
+      }
+
+      nav ul.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      nav ul li {
+        margin: 15px 0;
+        margin-left: 0;
+      }
+
+      nav ul li a {
+        font-size: 24px;
+        display: block;
+        padding: 10px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 950px) {
+      .header h4 {
+        font-size: 32px;
+      }
+
+      nav ul li {
+        margin-left: 15px;
+      }
+
+      nav ul li a {
+        font-size: 24px;
+        padding: 8px 12px;
+      }
+    }
+
     .projects-section {
-      padding: 100px 20px 60px;
+      flex: 1;
+      margin-top: 100px;
+      padding: 20px 20px 60px;
       max-width: 1400px;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     .project-category {
-      margin-bottom: 60px;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0);
       padding: 20px;
-      border-radius: 10px;
     }
 
     .project-category h3 {
-      color: #BDB835;
-      border-bottom: 2px solid #BDB835;
+      color: #FFFFFF;
       padding-bottom: 10px;
       margin-bottom: 30px;
       text-align: center;
     }
 
-    footer {
-      background-color: #373E4B;
-      color: #BDB835;
-      text-align: center;
+    .project-category .row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    .project-category .col-md-4 {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    .project-card {
       padding: 20px;
-      border-top: 3px solid #BDB835;
+      background-color: rgba(191, 201, 219, 0.4);
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card h4 {
+      color: #FFFFFF;
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      margin-bottom: 10px;
+    }
+
+    .project-card a {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    .project-card a:hover {
+      color: #ddd;
+    }
+
+    footer {
+      background-color: #bfc9db;
+      color: #373E4B;
+      text-align: center;
+      padding: 40px 20px;
+      width: 100%;
+      margin: 0; /* Remove margin */
     }
 
     footer a {
-      color: #BDB835;
+      color: #373E4B;
       text-decoration: none;
       transition: color 0.3s;
     }
@@ -109,145 +243,143 @@
 <body>
   <header class="header">
     <h4>Jack Hamilton</h4>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="resume.html">Resume</a></li>
+      <ul id="navMenu">
+        <li><a href="index.html" onclick="closeMenu()">About</a></li>
+        <li><a href="projects.html" onclick="closeMenu()">Projects</a></li>
+        <li><a href="resume.html" onclick="closeMenu()">Resume</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Projects Section -->
-  <div class="section text-center" style="width: 100%; padding: 0;">
-
-    <!-- Data Analysis Projects -->
-    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
-      <h3 class="mb-4" style="color: #BDB835;">Data Analytics</h3>
-      <h3 class="mb-4" style="color: #BDB835;">Data Analysis Projects</h3>
+  <div class="projects-section text-center">
+    <!-- Research Projects -->
+    <div class="project-category">
+      <h3>Research</h3>
       <div class="row">
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Music Analysis</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/MusicAnalysis" style="color: #BDB835;">GitHub Link</a><br>
-            Analyzed the top songs of 1953 vs. 2023 by comparing sonic features, sentiment, and structure. Used Pandas, Librosa, and deep learning to evaluate complexity and trends in music.</p>
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Bogmayer Ltd. Automated Analysis Platform</h4>
+            <p><a href="https://drive.google.com/file/d/1nyXJMs2196t9XySVXHxTW4zbMO43N4px/view?usp=sharing">Capstone Paper Link</a></p>
+            <p><a href="https://drive.google.com/file/d/19_6cf7ma1IH2diCye9EpZe55rFp5yGa4/view?usp=sharing">Capstone Presentation Link</a></p>
+            <p>Designed and implemented an automated analytics platform for Bogmayer Ltd. that ingests data from company data sources, performs end-to-end analysis, and delivers automated reporting to internal stakeholders.</p>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Lake Trout Analysis</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/jack-hamilton-lab1-laketrout.ipynb" style="color: #BDB835;">GitHub Link</a><br>
-            Cleaned trout data from Alaskan lakes using Pandas to learn foundational data wrangling: filtering, merging, and basic visualization for ecological analysis.</p>
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Evaluating Financial Markets with HMM's</h4>
+            <p><a href="https://drive.google.com/file/d/18VqLRoSptZGBjjYiwe1S8cyjXZZNL-43/view?usp=sharing">Paper Link</a></p>
+            <p><a href="https://drive.google.com/file/d/11rhDpJCLLicJBMZ5uuHRdSISqwmKzrrn/view?usp=sharing">Presentation Link</a></p>
+            <p>Used different forms Hidden Hidden Markov Models to predict the price and market condition across different financial markets (Capital Markets, Foreign Exchange Markets, and Cryptocurrency Markets)</p>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">NYC Death Rates</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/nyc-death-data-jack-hamilton.ipynb" style="color: #BDB835;">GitHub Link</a><br>
-            Explored public health trends in NYC using filtered subset data to compare mortality rates across demographics. Visualized using Plotnine.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Malaria Dynamics</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/malaria-project-jack-hamilton.ipynb" style="color: #BDB835;">GitHub Link</a><br>
-            Modeled malaria transmission in Rwanda using SIR models and SciPy’s ODEint. Simulated outcomes with and without vaccine interventions over 5-year projections.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Election Predictions</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/lab-5-predicting-the-mid-term-elections.ipynb" style="color: #BDB835;">GitHub Link</a><br>
-            Predicted midterm Senate outcomes using Monte Carlo simulations. Cleaned polling data and applied random distribution modeling to estimate win probabilities.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Python Projects -->
-    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
-      <h3 class="mb-4" style="color: #BDB835;">Python Projects</h3>
-      <div class="row">
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Command Line Hangman</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/HangManPy/main.py" style="color: #BDB835;">GitHub Link</a><br>
-            Built a text-based CLI Hangman game with recursive game loop, error handling, and difficulty levels. Emphasizes Pythonic use of functions, loops, and modularity.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Schedule Maker</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Python_Projects/ScheduleMaker/Schedule.py" style="color: #BDB835;">GitHub Link</a><br>
-            Created a calendar and task planner that outputs weekly and monthly layouts. Designed for the terminal using lists, custom input formatting, and control structures.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Java Projects -->
-    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
-      <h3 class="mb-4" style="color: #BDB835;">Java Projects</h3>
-      <div class="row">
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Command Line Wordle</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/WordleProject/src" style="color: #BDB835;">GitHub Link</a><br>
-            CLI clone of Wordle implemented in Java using arrays, encapsulation, and custom feedback logic with efficient character-level comparison.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Measures of Central Tendency</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/measuresCT/src/measuresCT" style="color: #BDB835;">GitHub Link</a><br>
-            JavaFX GUI to compute and display basic descriptive statistics. Follows MVC, uses ArrayLists, and handles various user input scenarios.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Graphical Data Display</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/work%202/src/work" style="color: #BDB835;">GitHub Link</a><br>
-            Visual app using JavaFX animations to highlight real-time changes in mean, median, and mode with animated rectangles that grow/shrink with data input.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">Air Hockey vs AI</h4>
-            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/hockey/src/hockey" style="color: #BDB835;">GitHub Link</a><br>
-            Single-player JavaFX air hockey with animated sprites and AI opponent powered by position tracking and learned responses using a HashMap system.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Statistical Analysis -->
-    <div class="py-5" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
-      <h3 class="mb-4" style="color: #BDB835;">Statistical Analysis</h3>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="p-4 bg-dark text-light rounded shadow h-100">
-            <h4 style="color: #BDB835;">SES Impact on Performance</h4>
-            <p><a href="https://drive.google.com/drive/folders/1zNm5xlO4knISnFJxHTyDfnHeXUSvmzOI" style="color: #BDB835;">Project Link</a><br>
-            Measured how socioeconomic status affects test scores using a 10,000-student dataset from NC public schools. Performed hypothesis testing and mean comparisons.</p>
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>AI for Remote Health Monitoring at Wake Forest </h4>
+            <p><a href="https://drive.google.com/file/d/1mjhmTtTRnO-yhUSuLd9JWYsBkhWZAoFr/view?usp=sharing">Presentation Link</a></p>
+            <p>Analyzed and found trends in cardiovascular EHR data to improve the correlation of raw Apple Watch ECG readinngs to the signals of Clinical Lead I ECG using Convolutional Neural Networks</p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Analytics Projects -->
+    <div class="project-category">
+      <h3>Applied Computational Modeling</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Reducing Gerrymandering in Florida</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/FloridaGerrymanderingWithTSP.ipynb">Notebook Link</a></p>
+            <p>Analyzed and optimized Florida's congressional district maps using algorithmic models to reduce gerrymandering. Leveraged optimization techniques and quantitative fairness metrics to evaluate alternative districting plans.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Malaria Dynamics in Rwanda</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/malaria-project-jack-hamilton.ipynb">Notebook Link</a></p>
+            <p>Modeled malaria transmission dynamics in Rwanda using SIR compartmental models and SciPy's ODEint. Simulated 5-year disease trajectories under varying vaccination scenarios to evaluate public health intervention effectiveness.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Election Predictions for the 2024 Midterm</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/lab-5-predicting-the-mid-term-elections.ipynb">Notebook Link</a></p>
+            <p>Predicted 2024 U.S. Senate election outcomes using Monte Carlo simulations. Cleaned and modeled polling data with probabilistic distributions to estimate win probabilities and assess electoral uncertainty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Applied Machine Learning & Statistical Analysis -->
+    <div class="project-category">
+      <h3>Applied Machine Learning & Statistical Analysis</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Quantifying Musical Complexity Across Eras</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/finalproject-musicanalyzer.ipynb">Notebook Link</a></p>
+            <p>Analyzed the top songs of 1953 vs. 2023 by comparing sonic features, sentiment, and structure. Used Pandas, Librosa, and deep learning to evaluate complexity and trends in music.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Predictive Analysis of Heart Failure Risk</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/jack-hamilton-heart-lab.ipynb">Notebook Link</a></p>
+            <p>Developed predictive models to assess heart failure risk using patient health indicators. Performed data cleaning, exploratory analysis, and model evaluation to identify significant predictors of cardiovascular outcomes.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Urban Mortality Trends in New York City</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/blob/main/Data_Analysis/nyc-death-data-jack-hamilton.ipynb">Notebook Link</a></p>
+            <p>Analyzed New York City mortality data to identify trends across time, causes of death, and demographic groups. Performed data cleaning, exploratory analysis, and visualization to uncover public health insights and disparities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artificial Intelligence/Machine Learning Projects -->
+    <div class="project-category">
+      <h3>Artificial Intelligence/Machine Learning</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Air Hockey vs AI</h4>
+            <p><a href="https://github.com/hamjac5334/Portfolio/tree/main/Java_Projects/hockey/src/hockey">GitHub Link</a></p>
+            <p>Single-player JavaFX air hockey with animated sprites and AI opponent powered by position tracking and learned responses using a HashMap system.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Machine Learning Technique Analysis</h4>
+            <p><a href="https://drive.google.com/file/d/1EJ21YxTEvgK5rnnVmcMTheBVP7fjPBMo/view?usp=sharing">Link to write up and code</a></p>
+            <p>Used both a data set of hand-drawn letters and the MNIST data set of numbers to evaluate supervised and unsupervised for recognition and classification.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="project-card">
+            <h4>Transformer Exploration</h4>
+            <p><a href="https://drive.google.com/file/d/1U6-ftGQpl-GXvuQq3IHASLqOCKAy2rxC/view?usp=sharing">Link to write up and code</a></p>
+            <p>Customized different transformers from Ollama to explore how each model and version handled lan create multiple personalized Large Language Models.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -260,5 +392,36 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.getElementById('navMenu');
+      const hamburger = document.querySelector('.hamburger');
+      const header = document.querySelector('.header');
+      
+      if (!header.contains(event.target) && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Reset menu state when resizing window
+    window.addEventListener('resize', function() {
+      const navMenu = document.getElementById('navMenu');
+      if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
